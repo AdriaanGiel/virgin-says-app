@@ -1,12 +1,6 @@
 html{
     background-color:#2b889a;
 }
-h1{
-    color:blue;
-}
-
-
-
 
 a{
     color:#2b889a;
@@ -45,10 +39,6 @@ h2{
     font-size:30px;
 }
 
-img{
-    height:40vh;
-}
-
 .navbar{
 
     width: 100vw;
@@ -62,8 +52,8 @@ img{
 }
 
 #startDiv{
-    float: left;
-    margin-top: 40%;
-    top: 50%;
     background-color:rgb(4,93,109);
+    margin-top:90%;
+
+
 }

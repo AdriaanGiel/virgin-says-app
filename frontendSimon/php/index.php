@@ -13,19 +13,22 @@
 
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
-
 </head>
 <body>
-<div class="navbar">
-    <ul>
-        <li><a href="index.php">Home</a></li>
-        <li style="float: right"><a href="reserveer.php">Boeken</a></li>
-    </ul>
+<div class="row">
+    <div class="navbar">
+        <ul>
+            <li><a href="index.php">Home</a></li>
+            <li style="float: right"><a href="">Boeken</a></li>
+        </ul>
+    </div>
 </div>
 <div class="container">
-    <div id="startDiv" class="col s2">
+    <div class="row">
+        <div id="startDiv" class="col s6 offset-s3 center-align">
 
-        <h2>Start</h2>
+            <h2>Start</h2>
+        </div>
     </div>
 </div>
 
