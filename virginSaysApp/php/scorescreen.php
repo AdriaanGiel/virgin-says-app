@@ -47,37 +47,38 @@ if ($conn->connect_error) {
       <form method="post" action="scorescreen.php">
         <div class="input-field col s6 offset-s3">
           <label for="scorepost" class="white-text">Score</label>
-          <input id="scorepost" class="col s12 flow-text"><?php echo mt_rand(0,1000)?></input>
+          <input name="scorepost" class="col s12 flow-text"><?php echo mt_rand(0,1000)?></input>
         </div>
         <div class="input-field col s6 offset-s3">
           <label for="name_input" class="white-text">Voer je naam in!</label>
-          <input id="name_input"placeholder="Naam (3 letters!)" type="text" class="validate" data-length="3">
+          <input name="name_input"placeholder="Naam (3 letters!)" type="text" class="validate" data-length="3">
         </div>
       </div>
     </div>
     <div class="section">
-      <table><thead>
-        <tr>
-          <th>Name</th>
-          <th>Score</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><?php if(isset($_POST['name_input'])){$Name = $_POST['name_input'];} ?></td>
-          <td><?php if(isset($_POST['scorepost'])){$Name = $_POST['scorepost'];} ?></td>
-        </tr>
-      </tbody>
-    </table>
     </div>
 
     <div class="section">
       <div class="container">
         <div class="row">
-          <button class="waves-effect waves-light btn-large col s6 offset-s3 red accent-2" type="submit" name="action">Post score!</button>
+          <input type ="submit" class="waves-effect waves-light btn-large col s6 offset-s3 red accent-2" value="Post Score!">
+          <!--<button class="waves-effect waves-light btn-large col s6 offset-s3 red accent-2" type="submit">Post score!</button>-->
         </div>
       </div>
     </div>
+    <table><thead>
+      <tr>
+        <th>Name</th>
+        <th>Score</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><?php if(isset($_POST['name_input'])){$Name = $_POST['name_input'];} ?></td>
+        <td><?php if(isset($_POST['scorepost'])){$Name = $_POST['scorepost'];} ?></td>
+      </tr>
+    </tbody>
+  </table>
   </form>
   <div class="section">
     <div class="container">
