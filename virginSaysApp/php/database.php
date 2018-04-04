@@ -13,5 +13,5 @@ if ($conn->connect_error) {
 }
 //echo "Connected successfully </br>";
 
-$sql = "SELECT id, name, score, ranking FROM scores ORDER BY score DESC";
+$sql = "SELECT id, name, score FROM scores ORDER BY score DESC";
 $result = $conn->query($sql);

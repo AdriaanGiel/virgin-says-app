@@ -10,11 +10,16 @@ $conn = new mysqli($servername, $username, $password, $db);
 // Check connection
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
-
-  if(isset($_POST['scorepost'])){$Score = $_POST['scorepost'];}
-  if(isset($_POST['name_input'])){$Name = $_POST['name_input'];}
-  $sql = "INSERT INTO scores (score, name) VALUES $Score, $Name";
 }
+
+if(isset($_POST['scorepost']) && isset($_POST['name_input'])){
+  $Score = $_POST['scorepost'];
+  $Name = $_POST['name_input'];
+  $intScore = (int)$Score;
+  $sql = "INSERT INTO scores (score, name) VALUES ('$intScore', '$Name')";
+  $result = mysqli_query($conn,$sql);
+}
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -44,14 +49,16 @@ if ($conn->connect_error) {
   <div class="section"></div>
   <div class="section">
     <div class="row"><p class="col s12 center-align white-text flow-text">Goed gedaan!</p>
-      <form method="post" action="scorescreen.php">
+      <form method="post" action="">
         <div class="input-field col s6 offset-s3">
           <label for="scorepost" class="white-text">Score</label>
-          <input name="scorepost" class="col s12 flow-text"><?php echo mt_rand(0,1000)?></input>
+          <?php $Score = mt_rand(0,1000);?>
+          <input name="scorepost" class="col s12 flow-text" value="<?php echo $Score?>"><?php echo $Score ?></input>
         </div>
         <div class="input-field col s6 offset-s3">
           <label for="name_input" class="white-text">Voer je naam in!</label>
-          <input name="name_input"placeholder="Naam (3 letters!)" type="text" class="validate" data-length="3">
+          <input name="name_input"placeholder="Naam (3 letters!)" type="text" value="" class="validate" data-length="3">
+
         </div>
       </div>
     </div>
@@ -61,35 +68,24 @@ if ($conn->connect_error) {
     <div class="section">
       <div class="container">
         <div class="row">
-          <input type ="submit" class="waves-effect waves-light btn-large col s6 offset-s3 red accent-2" value="Post Score!">
+          <button class ="waves-effect waves-light btn-large col s6 offset-s3 red accent-2">
+          <input type ="submit" value="Post Score!">
+        </button>
           <!--<button class="waves-effect waves-light btn-large col s6 offset-s3 red accent-2" type="submit">Post score!</button>-->
         </div>
       </div>
     </div>
-    <table><thead>
-      <tr>
-        <th>Name</th>
-        <th>Score</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><?php if(isset($_POST['name_input'])){$Name = $_POST['name_input'];} ?></td>
-        <td><?php if(isset($_POST['scorepost'])){$Name = $_POST['scorepost'];} ?></td>
-      </tr>
-    </tbody>
-  </table>
-  </form>
-  <div class="section">
-    <div class="container">
-      <div class="row">
-        <a class="waves-effect waves-light btn-large col s6 offset-s3 red accent-2" href="../index.php">Go home!</a>
-      </div>
+</form>
+<div class="section">
+  <div class="container">
+    <div class="row">
+      <a class="waves-effect waves-light btn-large col s6 offset-s3 red accent-2" href="../index.php">Go home!</a>
     </div>
   </div>
+</div>
 
-  <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
 
 </body>
 </html>
